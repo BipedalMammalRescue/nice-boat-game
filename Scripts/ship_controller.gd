@@ -79,4 +79,8 @@ func turn_right(delta: float) -> void:
 	look_direction_update.emit(look_direction)
 
 func eject(delta: float, direction: Vector3) -> void:
+	# get the rotation from forward to temp look
+	var rotation_needed = acos(Vector3.FORWARD.dot(look_direction))
+	var rotation_axis = Vector3.FORWARD.cross(look_direction).normalized()
+	direction = direction.rotated(rotation_axis, rotation_needed)
 	current_acceleration += direction * delta * eject_power / body_mass

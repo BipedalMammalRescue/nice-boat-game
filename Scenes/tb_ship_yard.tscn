@@ -9,12 +9,12 @@
 [node name="TbShipYard" type="Node3D"]
 
 [node name="Ship" parent="." instance=ExtResource("1_qpknw")]
-angular_speed = 0.5
+angular_speed = 1.0
 accelerate_power = 20.0
 decelerate_power = 10.0
-eject_power = 0.5
+eject_power = 10.0
 body_mass = 10.0
-drag_factor = 10.0
+drag_factor = 8.0
 min_pitch = -0.3
 max_pitch = 0.3
 
@@ -163,3 +163,4 @@ skeleton = NodePath("../..")
 [connection signal="dive" from="Input" to="Ship" method="dive"]
 [connection signal="left" from="Input" to="Ship" method="turn_left"]
 [connection signal="right" from="Input" to="Ship" method="turn_right"]
+[connection signal="translate" from="Input" to="Ship" method="eject"]
