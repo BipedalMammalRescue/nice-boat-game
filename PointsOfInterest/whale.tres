@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PoiData" load_steps=2 format=3 uid="uid://chuw58dbpdvwk"]
+
+[ext_resource type="Script" uid="uid://csq1hwd3b04th" path="res://Scripts/poi_data.gd" id="1_2a0dm"]
+
+[resource]
+script = ExtResource("1_2a0dm")
+flavor_text = "A large amount of organic matter forming a round, streamlined body floating in front of the scaner. No trace of movement is observed.
+More finds of this kind have been discovered in large quantities deeper from here, yet this one is in no rush to sink down."
+carbon_mass = 500.0
+iron_mass = 10.0
+metadata/_custom_type_script = "uid://csq1hwd3b04th"

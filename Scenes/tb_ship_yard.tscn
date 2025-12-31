@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkp15fxk2km4t"]
+[gd_scene load_steps=13 format=3 uid="uid://dkp15fxk2km4t"]
 
 [ext_resource type="PackedScene" uid="uid://dfk04uejn2wfo" path="res://Scenes/ship.tscn" id="1_qpknw"]
 [ext_resource type="Script" uid="uid://befajs73ybbbc" path="res://Scripts/input_manager.gd" id="2_3vkd5"]
@@ -6,6 +6,11 @@
 [ext_resource type="Script" uid="uid://c15n64aaicrxu" path="res://Scripts/scanner.gd" id="3_tar3g"]
 [ext_resource type="PackedScene" uid="uid://c34dsisf7jo8t" path="res://Scenes/point_of_interest.tscn" id="4_h17kd"]
 [ext_resource type="Resource" uid="uid://bbqyp3vb0bv8f" path="res://Configs/global_collision_configs.tres" id="4_hl2av"]
+[ext_resource type="Resource" uid="uid://cxuq2balhq32g" path="res://PointsOfInterest/machine_part.tres" id="7_5xpc5"]
+[ext_resource type="Script" uid="uid://bl1ojp47k1nqs" path="res://Scripts/Debug/debug_poi_screen.gd" id="7_apeqp"]
+[ext_resource type="Resource" uid="uid://by8y8ety5jhx0" path="res://PointsOfInterest/trivial_nonorganic_matter.tres" id="8_lbc2l"]
+[ext_resource type="Resource" uid="uid://chuw58dbpdvwk" path="res://PointsOfInterest/whale.tres" id="9_h4hto"]
+[ext_resource type="Script" uid="uid://bgg385mbesom8" path="res://Scripts/Debug/debug_capture_display.gd" id="11_h4hto"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3vkd5"]
 
@@ -41,7 +46,7 @@ mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
 [node name="PointOfInterest" parent="Pois/MeshInstance3D" instance=ExtResource("4_h17kd")]
-debug_string = "1"
+data = ExtResource("7_5xpc5")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Pois"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.682786, 0, -6.17424)
@@ -50,6 +55,7 @@ skeleton = NodePath("../..")
 
 [node name="PointOfInterest" parent="Pois/MeshInstance3D2" instance=ExtResource("4_h17kd")]
 debug_string = "2"
+data = ExtResource("8_lbc2l")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Pois"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.636157, 0, -6.17424)
@@ -58,258 +64,37 @@ skeleton = NodePath("../..")
 
 [node name="PointOfInterest" parent="Pois/MeshInstance3D3" instance=ExtResource("4_h17kd")]
 debug_string = "3"
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pois"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.907401, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois/MeshInstance3D4" instance=ExtResource("4_h17kd")]
-debug_string = "4"
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pois"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0505242, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois/MeshInstance3D5" instance=ExtResource("4_h17kd")]
-debug_string = "5"
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pois"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.631478)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois/MeshInstance3D6" instance=ExtResource("4_h17kd")]
-debug_string = "6"
-
-[node name="Pois5" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.285004, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pois5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois5/MeshInstance3D" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pois5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.682786, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois5/MeshInstance3D2" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pois5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.636157, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois5/MeshInstance3D3" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pois5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.907401, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois5/MeshInstance3D4" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pois5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0505242, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois5/MeshInstance3D5" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pois5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.631478)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois5/MeshInstance3D6" instance=ExtResource("4_h17kd")]
-
-[node name="Pois6" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.285004, 0, 9.015228)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pois6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois6/MeshInstance3D" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pois6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.682786, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois6/MeshInstance3D2" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pois6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.636157, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois6/MeshInstance3D3" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pois6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.907401, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois6/MeshInstance3D4" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pois6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0505242, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois6/MeshInstance3D5" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pois6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.631478)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois6/MeshInstance3D6" instance=ExtResource("4_h17kd")]
-
-[node name="Pois3" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.048258, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pois3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois3/MeshInstance3D" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pois3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.682786, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois3/MeshInstance3D2" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pois3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.636157, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois3/MeshInstance3D3" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pois3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.907401, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois3/MeshInstance3D4" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pois3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0505242, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois3/MeshInstance3D5" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pois3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.631478)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois3/MeshInstance3D6" instance=ExtResource("4_h17kd")]
-
-[node name="Pois4" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.048258, 0, 11.418488)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pois4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois4/MeshInstance3D" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pois4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.682786, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois4/MeshInstance3D2" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pois4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.636157, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois4/MeshInstance3D3" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pois4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.907401, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois4/MeshInstance3D4" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pois4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0505242, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois4/MeshInstance3D5" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pois4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.631478)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois4/MeshInstance3D6" instance=ExtResource("4_h17kd")]
-
-[node name="Pois2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.546633)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pois2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois2/MeshInstance3D" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pois2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.682786, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois2/MeshInstance3D2" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pois2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.636157, 0, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois2/MeshInstance3D3" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pois2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.907401, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois2/MeshInstance3D4" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pois2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0505242, -6.17424)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois2/MeshInstance3D5" instance=ExtResource("4_h17kd")]
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pois2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.631478)
-mesh = SubResource("BoxMesh_3vkd5")
-skeleton = NodePath("../..")
-
-[node name="PointOfInterest" parent="Pois2/MeshInstance3D6" instance=ExtResource("4_h17kd")]
+data = ExtResource("9_h4hto")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugPoiDisplay" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "UNINITIALIZED"
+script = ExtResource("7_apeqp")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+text = "UNINITIALIZED"
+script = ExtResource("11_h4hto")
 
 [connection signal="look_direction_update" from="Ship" to="Ship/MainCamera" method="look_at_new_direction"]
 [connection signal="look_direction_update" from="Ship" to="Ship/Scanner" method="look_at_new_direction"]
+[connection signal="scan_result" from="Ship/Scanner" to="Control/DebugPoiDisplay" method="_on_scanner_scan_result"]
 [connection signal="accelerate" from="InputManager" to="Ship" method="accelerate"]
 [connection signal="ascend" from="InputManager" to="Ship" method="ascend"]
 [connection signal="decelerate" from="InputManager" to="Ship" method="decelerate"]

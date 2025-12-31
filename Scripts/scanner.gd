@@ -1,6 +1,8 @@
 extends Node3D
 class_name Scanner
 
+signal scan_result(poi: PointOfInterest)
+
 @export var collision_config: CollisionConfigs
 @export var scan_distance: float
 
@@ -34,4 +36,5 @@ func _physics_process(_delta: float) -> void:
 	var poi := result.collider as PointOfInterest
 	
 	# process the collision result
-	print(poi.debug_string)   
+	if poi:
+		scan_result.emit(poi)

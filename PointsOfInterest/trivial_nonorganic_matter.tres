@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PoiData" load_steps=2 format=3 uid="uid://by8y8ety5jhx0"]
+
+[ext_resource type="Script" uid="uid://csq1hwd3b04th" path="res://Scripts/poi_data.gd" id="1_k5m61"]
+
+[resource]
+script = ExtResource("1_k5m61")
+flavor_text = "A piece of nonorganic matter, but curiously thin layer of carbon has accumulated on top of it."
+carbon_mass = 1.0
+iron_mass = 20.0
+silicon_mass = 20.0
+metadata/_custom_type_script = "uid://csq1hwd3b04th"
