@@ -10,6 +10,7 @@ signal right(delta: float)
 signal translate(delta: float, direction: Vector3)
 
 signal scan()
+signal capture()
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("accelerate"):
@@ -34,3 +35,5 @@ func _process(delta: float) -> void:
 		translate.emit(delta, Vector3.RIGHT)
 	if Input.is_action_just_pressed("scan"):
 		scan.emit()
+	if Input.is_action_just_pressed("capture"):
+		capture.emit()

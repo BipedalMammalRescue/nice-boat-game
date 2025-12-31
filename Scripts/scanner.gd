@@ -1,40 +1,44 @@
 extends Node3D
 class_name Scanner
 
-signal scan_result(poi: PointOfInterest)
+signal scan_result(poi: PoiData)
+signal capture_result(poi: PoiData)
 
 @export var collision_config: CollisionConfigs
 @export var scan_distance: float
 
 var should_scan: bool = false
+var should_capture: bool = false
 var look_direction: Vector3
 
 func request_scan() -> void:
 	should_scan = true
+	
+func request_capture() -> void:
+	should_capture = true
 
 func look_at_new_direction(direction: Vector3) -> void:
 	look_direction = direction.normalized()
-
-# TODO: wtf am I doing here
-func _physics_process(_delta: float) -> void:
-	if not should_scan:
-		return
-	should_scan = false 
 	
-	var space_state = get_world_3d().direct_space_state
+func process_scan_or_capture(result: Dictionary, scan: bool, capture: bool) -> void:
+	if result.is_empty() || result.collider is not PointOfInterest:
+		return
+	var poi := result.collider as PointOfInterest
+	if poi and scan:
+		scan_result.emit(poi.data)
+	if poi and capture:
+		capture_result.emit(poi.data)
 
+func _physics_process(_delta: float) -> void:
+	if not should_scan and not should_capture:
+		return
+	var space_state = get_world_3d().direct_space_state
 	var origin = global_transform.origin
 	var end = origin + look_direction * scan_distance
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
 	query.collision_mask = collision_config.get_poi_mask()    
 	query.collide_with_areas = true
-	#query.collision_mask = collision_config.get_poi_mask()
 	var result = space_state.intersect_ray(query)
-	if result.is_empty() || result.collider is not PointOfInterest:
-		return
-	
-	var poi := result.collider as PointOfInterest
-	
-	# process the collision result
-	if poi:
-		scan_result.emit(poi)
+	process_scan_or_capture(result, should_scan, should_capture)
+	should_scan = false
+	should_capture = false

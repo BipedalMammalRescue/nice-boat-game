@@ -81,7 +81,7 @@ offset_bottom = 23.0
 text = "UNINITIALIZED"
 script = ExtResource("7_apeqp")
 
-[node name="Label" type="Label" parent="Control"]
+[node name="DebugCaptureDisplay" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -94,9 +94,11 @@ script = ExtResource("11_h4hto")
 
 [connection signal="look_direction_update" from="Ship" to="Ship/MainCamera" method="look_at_new_direction"]
 [connection signal="look_direction_update" from="Ship" to="Ship/Scanner" method="look_at_new_direction"]
+[connection signal="capture_result" from="Ship/Scanner" to="Control/DebugCaptureDisplay" method="show_poi"]
 [connection signal="scan_result" from="Ship/Scanner" to="Control/DebugPoiDisplay" method="_on_scanner_scan_result"]
 [connection signal="accelerate" from="InputManager" to="Ship" method="accelerate"]
 [connection signal="ascend" from="InputManager" to="Ship" method="ascend"]
+[connection signal="capture" from="InputManager" to="Ship/Scanner" method="request_capture"]
 [connection signal="decelerate" from="InputManager" to="Ship" method="decelerate"]
 [connection signal="dive" from="InputManager" to="Ship" method="dive"]
 [connection signal="left" from="InputManager" to="Ship" method="turn_left"]
