@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c34dsisf7jo8t"]
+
+[ext_resource type="Script" uid="uid://px5gk26t2l3h" path="res://Scripts/point_of_interest.gd" id="1_eses7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2m3mv"]
+
+[node name="PointOfInterest" type="StaticBody3D"]
+collision_layer = 3
+script = ExtResource("1_eses7")
+debug_string = "111"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+shape = SubResource("SphereShape3D_2m3mv")

@@ -4,11 +4,13 @@ class_name ShipController
 signal look_direction_update(new_look_direction: Vector3)
 signal velocity_update(new_velocity: Vector3)
 
+@export var body_mass: float
+
 @export var angular_speed: float
+
 @export var accelerate_power: float
 @export var decelerate_power: float
 @export var eject_power: float
-@export var body_mass: float
 
 @export var drag_factor: float
 
@@ -24,6 +26,9 @@ var current_acceleration: Vector3
 func _enter_tree() -> void:
 	look_direction = - transform.basis.z
 	current_acceleration = Vector3.ZERO
+	
+	look_direction_update.emit(look_direction)
+	velocity_update.emit(velocity)
 
 func _process(delta: float) -> void:
 	if current_acceleration.length() > 0:
@@ -82,5 +87,7 @@ func eject(delta: float, direction: Vector3) -> void:
 	# get the rotation from forward to temp look
 	var rotation_needed = acos(Vector3.FORWARD.dot(look_direction))
 	var rotation_axis = Vector3.FORWARD.cross(look_direction).normalized()
-	direction = direction.rotated(rotation_axis, rotation_needed)
+	
+	if rotation_axis.length() > 0:
+		direction = direction.rotated(rotation_axis, rotation_needed)
 	current_acceleration += direction * delta * eject_power / body_mass

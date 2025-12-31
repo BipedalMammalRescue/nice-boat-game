@@ -1,166 +1,320 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkp15fxk2km4t"]
+[gd_scene load_steps=8 format=3 uid="uid://dkp15fxk2km4t"]
 
 [ext_resource type="PackedScene" uid="uid://dfk04uejn2wfo" path="res://Scenes/ship.tscn" id="1_qpknw"]
 [ext_resource type="Script" uid="uid://befajs73ybbbc" path="res://Scripts/input_manager.gd" id="2_3vkd5"]
 [ext_resource type="Script" uid="uid://p0q7sajs81k8" path="res://Scripts/camera_controller.gd" id="2_3y35y"]
+[ext_resource type="Script" uid="uid://c15n64aaicrxu" path="res://Scripts/scanner.gd" id="3_tar3g"]
+[ext_resource type="PackedScene" uid="uid://c34dsisf7jo8t" path="res://Scenes/point_of_interest.tscn" id="4_h17kd"]
+[ext_resource type="Resource" uid="uid://bbqyp3vb0bv8f" path="res://Configs/global_collision_configs.tres" id="4_hl2av"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3vkd5"]
 
 [node name="TbShipYard" type="Node3D"]
 
 [node name="Ship" parent="." instance=ExtResource("1_qpknw")]
-angular_speed = 1.0
+body_mass = 10.0
+angular_speed = 0.3
 accelerate_power = 20.0
 decelerate_power = 10.0
 eject_power = 10.0
-body_mass = 10.0
 drag_factor = 8.0
 min_pitch = -0.3
 max_pitch = 0.3
 
-[node name="Camera3D" type="Camera3D" parent="Ship"]
+[node name="MainCamera" type="Camera3D" parent="Ship"]
 current = true
 script = ExtResource("2_3y35y")
 
-[node name="Input" type="Node" parent="."]
+[node name="Scanner" type="Node3D" parent="Ship"]
+script = ExtResource("3_tar3g")
+collision_config = ExtResource("4_hl2av")
+scan_distance = 20.0
+
+[node name="InputManager" type="Node" parent="."]
 script = ExtResource("2_3vkd5")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Pois" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pois"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.76296, 0, -6.17424)
+[node name="PointOfInterest" parent="Pois/MeshInstance3D" instance=ExtResource("4_h17kd")]
+debug_string = "1"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pois"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.682786, 0, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34809, 0, -6.17424)
+[node name="PointOfInterest" parent="Pois/MeshInstance3D2" instance=ExtResource("4_h17kd")]
+debug_string = "2"
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pois"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.636157, 0, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27515, -6.17424)
+[node name="PointOfInterest" parent="Pois/MeshInstance3D3" instance=ExtResource("4_h17kd")]
+debug_string = "3"
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pois"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.907401, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.38527, -6.17424)
+[node name="PointOfInterest" parent="Pois/MeshInstance3D4" instance=ExtResource("4_h17kd")]
+debug_string = "4"
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pois"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0505242, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.2321)
+[node name="PointOfInterest" parent="Pois/MeshInstance3D5" instance=ExtResource("4_h17kd")]
+debug_string = "5"
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pois"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.631478)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="Node3D2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.9498)
+[node name="PointOfInterest" parent="Pois/MeshInstance3D6" instance=ExtResource("4_h17kd")]
+debug_string = "6"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2"]
+[node name="Pois5" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.285004, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pois5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.76296, 0, -6.17424)
+[node name="PointOfInterest" parent="Pois5/MeshInstance3D" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pois5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.682786, 0, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34809, 0, -6.17424)
+[node name="PointOfInterest" parent="Pois5/MeshInstance3D2" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pois5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.636157, 0, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27515, -6.17424)
+[node name="PointOfInterest" parent="Pois5/MeshInstance3D3" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pois5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.907401, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.38527, -6.17424)
+[node name="PointOfInterest" parent="Pois5/MeshInstance3D4" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pois5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0505242, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.2321)
+[node name="PointOfInterest" parent="Pois5/MeshInstance3D5" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pois5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.631478)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="Node3D3" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9843, 0, 2.37953)
+[node name="PointOfInterest" parent="Pois5/MeshInstance3D6" instance=ExtResource("4_h17kd")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3"]
+[node name="Pois6" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.285004, 0, 9.015228)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pois6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.76296, 0, -6.17424)
+[node name="PointOfInterest" parent="Pois6/MeshInstance3D" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pois6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.682786, 0, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34809, 0, -6.17424)
+[node name="PointOfInterest" parent="Pois6/MeshInstance3D2" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pois6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.636157, 0, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27515, -6.17424)
+[node name="PointOfInterest" parent="Pois6/MeshInstance3D3" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pois6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.907401, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.38527, -6.17424)
+[node name="PointOfInterest" parent="Pois6/MeshInstance3D4" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pois6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0505242, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.2321)
+[node name="PointOfInterest" parent="Pois6/MeshInstance3D5" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pois6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.631478)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="Node3D4" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8695, 0, 6.65734)
+[node name="PointOfInterest" parent="Pois6/MeshInstance3D6" instance=ExtResource("4_h17kd")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D4"]
+[node name="Pois3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.048258, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pois3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.76296, 0, -6.17424)
+[node name="PointOfInterest" parent="Pois3/MeshInstance3D" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pois3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.682786, 0, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34809, 0, -6.17424)
+[node name="PointOfInterest" parent="Pois3/MeshInstance3D2" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pois3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.636157, 0, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27515, -6.17424)
+[node name="PointOfInterest" parent="Pois3/MeshInstance3D3" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pois3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.907401, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.38527, -6.17424)
+[node name="PointOfInterest" parent="Pois3/MeshInstance3D4" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pois3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0505242, -6.17424)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.2321)
+[node name="PointOfInterest" parent="Pois3/MeshInstance3D5" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pois3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.631478)
 mesh = SubResource("BoxMesh_3vkd5")
 skeleton = NodePath("../..")
 
-[connection signal="look_direction_update" from="Ship" to="Ship/Camera3D" method="look_at_new_direction"]
-[connection signal="accelerate" from="Input" to="Ship" method="accelerate"]
-[connection signal="ascend" from="Input" to="Ship" method="ascend"]
-[connection signal="decelerate" from="Input" to="Ship" method="decelerate"]
-[connection signal="dive" from="Input" to="Ship" method="dive"]
-[connection signal="left" from="Input" to="Ship" method="turn_left"]
-[connection signal="right" from="Input" to="Ship" method="turn_right"]
-[connection signal="translate" from="Input" to="Ship" method="eject"]
+[node name="PointOfInterest" parent="Pois3/MeshInstance3D6" instance=ExtResource("4_h17kd")]
+
+[node name="Pois4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.048258, 0, 11.418488)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pois4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="PointOfInterest" parent="Pois4/MeshInstance3D" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pois4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.682786, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="PointOfInterest" parent="Pois4/MeshInstance3D2" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pois4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.636157, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="PointOfInterest" parent="Pois4/MeshInstance3D3" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pois4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.907401, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="PointOfInterest" parent="Pois4/MeshInstance3D4" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pois4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0505242, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="PointOfInterest" parent="Pois4/MeshInstance3D5" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pois4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.631478)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="PointOfInterest" parent="Pois4/MeshInstance3D6" instance=ExtResource("4_h17kd")]
+
+[node name="Pois2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.546633)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pois2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="PointOfInterest" parent="Pois2/MeshInstance3D" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pois2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.682786, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="PointOfInterest" parent="Pois2/MeshInstance3D2" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pois2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.636157, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="PointOfInterest" parent="Pois2/MeshInstance3D3" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pois2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.907401, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="PointOfInterest" parent="Pois2/MeshInstance3D4" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pois2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0505242, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="PointOfInterest" parent="Pois2/MeshInstance3D5" instance=ExtResource("4_h17kd")]
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pois2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.631478)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="PointOfInterest" parent="Pois2/MeshInstance3D6" instance=ExtResource("4_h17kd")]
+
+[connection signal="look_direction_update" from="Ship" to="Ship/MainCamera" method="look_at_new_direction"]
+[connection signal="look_direction_update" from="Ship" to="Ship/Scanner" method="look_at_new_direction"]
+[connection signal="accelerate" from="InputManager" to="Ship" method="accelerate"]
+[connection signal="ascend" from="InputManager" to="Ship" method="ascend"]
+[connection signal="decelerate" from="InputManager" to="Ship" method="decelerate"]
+[connection signal="dive" from="InputManager" to="Ship" method="dive"]
+[connection signal="left" from="InputManager" to="Ship" method="turn_left"]
+[connection signal="right" from="InputManager" to="Ship" method="turn_right"]
+[connection signal="scan" from="InputManager" to="Ship/Scanner" method="request_scan"]
+[connection signal="translate" from="InputManager" to="Ship" method="eject"]

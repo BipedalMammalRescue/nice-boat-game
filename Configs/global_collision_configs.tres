@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CollisionConfigs" load_steps=2 format=3 uid="uid://bbqyp3vb0bv8f"]
+
+[ext_resource type="Script" uid="uid://dsvqq7gymlbpg" path="res://Scripts/collision_configs.gd" id="1_1y8n2"]
+
+[resource]
+script = ExtResource("1_1y8n2")
+metadata/_custom_type_script = "uid://dsvqq7gymlbpg"
