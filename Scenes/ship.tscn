@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfk04uejn2wfo"]
+
+[ext_resource type="Script" uid="uid://c4pt4hgjtrjy5" path="res://Scripts/ship_controller.gd" id="1_l3rv8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l3rv8"]
+
+[node name="Ship" type="Node3D"]
+script = ExtResource("1_l3rv8")
+
+[node name="CenterOfMass" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CenterOfMass"]
+shape = SubResource("SphereShape3D_l3rv8")
+
+[node name="Look" type="Node3D" parent="."]

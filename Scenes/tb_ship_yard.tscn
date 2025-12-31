@@ -1,0 +1,165 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkp15fxk2km4t"]
+
+[ext_resource type="PackedScene" uid="uid://dfk04uejn2wfo" path="res://Scenes/ship.tscn" id="1_qpknw"]
+[ext_resource type="Script" uid="uid://befajs73ybbbc" path="res://Scripts/input_manager.gd" id="2_3vkd5"]
+[ext_resource type="Script" uid="uid://p0q7sajs81k8" path="res://Scripts/camera_controller.gd" id="2_3y35y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3vkd5"]
+
+[node name="TbShipYard" type="Node3D"]
+
+[node name="Ship" parent="." instance=ExtResource("1_qpknw")]
+angular_speed = 0.5
+accelerate_power = 20.0
+decelerate_power = 10.0
+eject_power = 0.5
+body_mass = 10.0
+drag_factor = 10.0
+min_pitch = -0.3
+max_pitch = 0.3
+
+[node name="Camera3D" type="Camera3D" parent="Ship"]
+current = true
+script = ExtResource("2_3y35y")
+
+[node name="Input" type="Node" parent="."]
+script = ExtResource("2_3vkd5")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.76296, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34809, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27515, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.38527, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.2321)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.9498)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.76296, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34809, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27515, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.38527, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.2321)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="Node3D3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9843, 0, 2.37953)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.76296, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34809, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27515, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.38527, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.2321)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="Node3D4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8695, 0, 6.65734)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.76296, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34809, 0, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27515, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.38527, -6.17424)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.2321)
+mesh = SubResource("BoxMesh_3vkd5")
+skeleton = NodePath("../..")
+
+[connection signal="look_direction_update" from="Ship" to="Ship/Camera3D" method="look_at_new_direction"]
+[connection signal="accelerate" from="Input" to="Ship" method="accelerate"]
+[connection signal="ascend" from="Input" to="Ship" method="ascend"]
+[connection signal="decelerate" from="Input" to="Ship" method="decelerate"]
+[connection signal="dive" from="Input" to="Ship" method="dive"]
+[connection signal="left" from="Input" to="Ship" method="turn_left"]
+[connection signal="right" from="Input" to="Ship" method="turn_right"]
