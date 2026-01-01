@@ -1,0 +1,13 @@
+interesting mechanics to have:
+	1. an inventory system: gamify the scan-capture-learn loop further by making the player manage inventory
+	2. in-game codex: diversify narrative approaches
+	3. ship health: the player should have a lot of ways to destroy their ship causing a game-over
+	4. terrain scan: instead of just staring at a bunch of boxes on the scree, the player should be able to also scan terrain as part of the navigation
+		puzzle
+
+on the fence about:
+	1. real-time combat: combat is the simplest way to introduce strategy into gameplay, but why would a deep-sea excavation ship fight?
+	2. nemsis chase mechanism: I fucking hate this but it fits the tone
+
+need to figure out:
+	1. how should the game progress at all?
